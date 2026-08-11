@@ -34,7 +34,6 @@ include 'koneksi.php';
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link text-white" href="#katalog">Katalog Produk</a></li>
         <li class="nav-item"><a class="nav-link text-white" href="#tentang">Kontak & Medsos</a></li>
-        <li class="nav-item"><a class="btn btn-outline-light ms-lg-3 mt-2 mt-lg-0" href="cart.php"><i class="bi bi-cart"></i> Keranjang</a></li>
       </ul>
     </div>
   </div>
@@ -90,7 +89,6 @@ include 'koneksi.php';
         <div class="social-icons">
           <a href="https://www.instagram.com/romtera.team?igsh=anF6ZG82Z3o0ejhq" target="_blank"><i class="bi bi-instagram"></i></a>
           <a href="https://www.tiktok.com/@romtera.team?_r=1&_t=ZS-98Z7xnvFWUP" target="_blank"><i class="bi bi-tiktok"></i></a>
-          <a href="#" target="_blank"><i class="bi bi-youtube"></i></a>
         </div>
       </div>
     </div>
