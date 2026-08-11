@@ -83,7 +83,6 @@ include 'koneksi.php';
         <div class="d-flex flex-column align-items-center gap-2">
            <a href="https://shopee.co.id/Romtera.team" target="_blank" class="btn btn-outline-light btn-sm w-75 rounded-pill"><i class="bi bi-bag-fill"></i> Shopee</a>
            <a href="https://www.tokopedia.com/romtera.team" target="_blank" class="btn btn-outline-light btn-sm w-75 rounded-pill"><i class="bi bi-shop"></i> Tokopedia</a>
-           <a href="#" target="_blank" class="btn btn-outline-light btn-sm w-75 rounded-pill"><i class="bi bi-cart-check"></i> Lazada</a>
         </div>
       </div>
       <div class="col-md-4 mb-4 text-center text-md-end">
