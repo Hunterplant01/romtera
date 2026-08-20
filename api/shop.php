@@ -6,7 +6,7 @@ include 'koneksi.php';
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Romtera - Pusat Mannequin CPR & Alat Peraga Medis</title>
+<title>Romtera - Pusat Mannequin RJP & Alat Peraga Medis</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 <style>
@@ -41,9 +41,18 @@ include 'koneksi.php';
 
 <section class="hero-section">
   <div class="container">
-    <h1 class="display-5 hero-title mb-3">Pusat Mannequin CPR Profesional</h1>
+    <h1 class="display-5 hero-title mb-3">ROMTERA</h1>
     <p class="lead text-muted mb-4" style="max-width: 700px; margin: auto;">
-      Tingkatkan kualitas pelatihan medis dan pertolongan pertama (First Aid) Anda dengan alat peraga CPR terbaik dari Romtera. Hubungi kami via WhatsApp atau kunjungi lapak resmi kami.
+      Media Edukasi Penanganan Tersedak
+    </p>
+    <p class="lead text-muted mb-4" style="max-width: 700px; margin: auto;">
+      Dari tahu, menjadi mampu
+    </p>
+    <p class="lead text-muted mb-4" style="max-width: 700px; margin: auto;">
+      ROMTERA menghadirkan pengalaman belajar penanganan tersedak melalui simulasi yang interaktif dan realistis, sehingga peserta dapat memahami dan mempraktikkan teknik pertolongan pertama dengan lebih percaya diri.
+    </p>
+    <p class="lead text-muted mb-4" style="max-width: 700px; margin: auto;">
+Tanggap Tersedak, Selamatkan Nyawa
     </p>
     <a href="#katalog" class="btn btn-primary btn-lg rounded-pill px-4 shadow-sm" style="background-color: #0056b3; border: none;">Lihat Katalog Mannequin</a>
   </div>
