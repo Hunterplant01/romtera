@@ -84,7 +84,7 @@ Tanggap Tersedak, Selamatkan Nyawa
     <div class="row mb-4">
       <div class="col-md-4 mb-4 text-center text-md-start">
         <h5 class="fw-bold mb-3">Romtera Team</h5>
-        <p class="text-white-50 small">Penyedia perlengkapan dan alat peraga simulasi medis (Mannequin CPR) terpercaya. Mendukung kegiatan Edu Resque dengan standar terbaik.</p>
+        <p class="text-white-50 small">Penyedia perlengkapan dan alat peraga simulasi medis terpercaya. Mendukung kegiatan Edu Resque dengan standar terbaik.</p>
       </div>
       <div class="col-md-4 mb-4 text-center">
         <h5 class="fw-bold mb-3">Marketplace Resmi</h5>
