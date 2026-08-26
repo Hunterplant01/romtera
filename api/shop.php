@@ -78,9 +78,9 @@ Tanggap Tersedak, Selamatkan Nyawa
   <?php endwhile; ?>
   </div>
     //
-    <div class="row g-0">
+<div class="row g-0">
       <div class="col-md-5 bg-white text-center border-end">
-       <a href="https://ibb.co.com/n8MsRc3K"><img src="https://i.ibb.co.com/PzGZthTV/Whats-App-Image-2026-08-09-at-11-13-31.jpg" /></a>
+       <a href="https://ibb.co.com/n8MsRc3K"><img src="https://i.ibb.co.com/PzGZthTV/Whats-App-Image-2026-08-09-at-11-13-31.jpg" height="300"></a>
       </div>
       
       <div class="col-md-7 p-4 p-md-5 bg-white">
@@ -96,8 +96,25 @@ Tanggap Tersedak, Selamatkan Nyawa
           </div>
         </div>
 
+    <div class="row g-0">
+      <div class="col-md-5 bg-white text-center border-end">
+       <a href="https://ibb.co.com/n8MsRc3K"><img src="   img src="https://i.ibb.co.com/Jw2pbtyn/Whats-App-Image-2026-08-09-at-11-14-49.jpg" " height="300"></a>
       </div>
-    </div>
+      
+      <div class="col-md-7 p-4 p-md-5 bg-white">
+        <h3 class="text-danger fw-bold mb-4">Ketua Tim/Ceo</h3>
+
+        <div class="mb-4">
+
+          <p style="line-height: 1.8; color: #4a4a4a;" class="mt-3">
+           maura novita zachra<br>
+        </p>
+        </div>
+        
+          </div>
+        </div>
+
+ 
     //
 </section>
 
