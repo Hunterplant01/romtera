@@ -95,10 +95,10 @@ Tanggap Tersedak, Selamatkan Nyawa
         
           </div>
         </div>
-
-    <div class="row g-0">
+</br>
+<div class="row g-0">
       <div class="col-md-5 bg-white text-center border-end">
-       <a href="https://ibb.co.com/n8MsRc3K"><img src="   img src="https://i.ibb.co.com/Jw2pbtyn/Whats-App-Image-2026-08-09-at-11-14-49.jpg" " height="300"></a>
+       <a href="https://ibb.co.com/n8MsRc3K"><img src="https://i.ibb.co.com/v4kBmGq2/Whats-App-Image-2026-08-09-at-11-14-25.jpg" alt="Whats App Image 2026 08 09 at 11 14 25" border="0" height="300"></a>
       </div>
       
       <div class="col-md-7 p-4 p-md-5 bg-white">
@@ -113,8 +113,64 @@ Tanggap Tersedak, Selamatkan Nyawa
         
           </div>
         </div>
+</br>
+3
+           <div class="row g-0">
+      <div class="col-md-5 bg-white text-center border-end">
+       <a href="https://ibb.co.com/n8MsRc3K"><img src="https://i.ibb.co.com/Jw2pbtyn/Whats-App-Image-2026-08-09-at-11-14-49.jpg" alt="Whats App Image 2026 08 09 at 11 14 49" border="0">height="300"></a>
+      </div>
+      
+      <div class="col-md-7 p-4 p-md-5 bg-white">
+        <h3 class="text-danger fw-bold mb-4">Finance</h3>
 
- 
+        <div class="mb-4">
+
+          <p style="line-height: 1.8; color: #4a4a4a;" class="mt-3">
+          Febi rahma aulia<br>
+        </p>
+        </div>
+        
+          </div>
+        </div>
+</br>
+4
+           <div class="row g-0">
+      <div class="col-md-5 bg-white text-center border-end">
+       <a href="https://ibb.co.com/n8MsRc3K"><img src="https://i.ibb.co.com/23r79T4r/Whats-App-Image-2026-08-09-at-11-15-23.jpg" height="300"></a>
+      </div>
+      
+      <div class="col-md-7 p-4 p-md-5 bg-white">
+        <h3 class="text-danger fw-bold mb-4">publication</h3>
+
+        <div class="mb-4">
+
+          <p style="line-height: 1.8; color: #4a4a4a;" class="mt-3">
+          Ibnu muhamad nurrohim<br>
+        </p>
+        </div>
+        
+          </div>
+        </div>
+</br>
+5
+           <div class="row g-0">
+      <div class="col-md-5 bg-white text-center border-end">
+       <a href="https://ibb.co.com/n8MsRc3K"><img src="https://i.ibb.co.com/Nh2fPYS/Whats-App-Image-2026-08-09-at-11-16-09.jpg"  height="300"></a>
+      </div>
+      
+      <div class="col-md-7 p-4 p-md-5 bg-white">
+        <h3 class="text-danger fw-bold mb-4">procuretment</h3>
+
+        <div class="mb-4">
+
+          <p style="line-height: 1.8; color: #4a4a4a;" class="mt-3">
+          khefit yulistio <br>
+        </p>
+        </div>
+        
+          </div>
+        </div>
+</br>
     //
 </section>
 
