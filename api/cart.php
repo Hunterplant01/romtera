@@ -40,7 +40,9 @@ $total = 0;
 <?php foreach($cart as $id=>$c):
 $sub = $c['price'] * $c['qty'];
 $total += $sub;
-$imgSrc = (strpos($c['image'], 'http') === 0) ? $c['image'] : "/assets/img/products/" . $c['image'];
+$images = explode(',', $c['image']);
+$first_img = trim($images[0]);
+$imgSrc = (strpos($first_img, 'http') === 0) ? $first_img : "/assets/img/products/" . $first_img;
 ?>
 <tr>
 <td>
