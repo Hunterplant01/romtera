@@ -77,6 +77,28 @@ Tanggap Tersedak, Selamatkan Nyawa
   </div>
   <?php endwhile; ?>
   </div>
+    //
+    <div class="row g-0">
+      <div class="col-md-5 bg-white text-center border-end">
+       <a href="https://ibb.co.com/n8MsRc3K"><img src="https://i.ibb.co.com/PzGZthTV/Whats-App-Image-2026-08-09-at-11-13-31.jpg" /></a>
+      </div>
+      
+      <div class="col-md-7 p-4 p-md-5 bg-white">
+        <h3 class="text-danger fw-bold mb-4">dosen pembimbing</h3>
+
+        <div class="mb-4">
+
+          <p style="line-height: 1.8; color: #4a4a4a;" class="mt-3">
+           Ns.M hanif prasetya adhi S.kep.M.kep<br>
+        </p>
+        </div>
+        
+          </div>
+        </div>
+
+      </div>
+    </div>
+    //
 </section>
 
 <footer id="tentang" class="footer mt-5">
