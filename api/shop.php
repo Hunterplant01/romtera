@@ -77,7 +77,9 @@ Tanggap Tersedak, Selamatkan Nyawa
   </div>
   <?php endwhile; ?>
   </div>
-    //
+<div>
+    <h1 class="text-black text-center fw-bold mb-4">MEET OUR TEAM!</h1> 
+      </div>
 <div class="row g-0">
       <div class="col-md-5 bg-white text-center border-end">
        <a href="https://ibb.co.com/n8MsRc3K"><img src="https://i.ibb.co.com/PzGZthTV/Whats-App-Image-2026-08-09-at-11-13-31.jpg" height="300"></a>
@@ -114,7 +116,6 @@ Tanggap Tersedak, Selamatkan Nyawa
           </div>
         </div>
 </br>
-3
            <div class="row g-0">
       <div class="col-md-5 bg-white text-center border-end">
        <a href="https://ibb.co.com/n8MsRc3K"><img src="https://i.ibb.co.com/Jw2pbtyn/Whats-App-Image-2026-08-09-at-11-14-49.jpg" alt="Whats App Image 2026 08 09 at 11 14 49" height="300"></a>
@@ -133,7 +134,6 @@ Tanggap Tersedak, Selamatkan Nyawa
           </div>
         </div>
 </br>
-4
            <div class="row g-0">
       <div class="col-md-5 bg-white text-center border-end">
        <a href="https://ibb.co.com/n8MsRc3K"><img src="https://i.ibb.co.com/23r79T4r/Whats-App-Image-2026-08-09-at-11-15-23.jpg" height="300"></a>
@@ -152,7 +152,6 @@ Tanggap Tersedak, Selamatkan Nyawa
           </div>
         </div>
 </br>
-5
            <div class="row g-0">
       <div class="col-md-5 bg-white text-center border-end">
        <a href="https://ibb.co.com/n8MsRc3K"><img src="https://i.ibb.co.com/Nh2fPYS/Whats-App-Image-2026-08-09-at-11-16-09.jpg"  height="300"></a>
@@ -171,7 +170,6 @@ Tanggap Tersedak, Selamatkan Nyawa
           </div>
         </div>
 </br>
-    //
 </section>
 
 <footer id="tentang" class="footer mt-5">
