@@ -63,7 +63,9 @@ Tanggap Tersedak, Selamatkan Nyawa
   <?php
   $q = $koneksi->query("SELECT * FROM products ORDER BY id DESC");
   while($p = $q->fetch_assoc()):
-      $imgSrc = (strpos($p['image'], 'http') === 0) ? $p['image'] : "/assets/img/products/" . $p['image'];
+      $images = explode(',', $p['image']);
+      $first_img = trim($images[0]);
+      $imgSrc = (strpos($first_img, 'http') === 0) ? $first_img : "/assets/img/products/" . $first_img;
   ?>
   <div class="col-md-4 col-lg-3 mb-4">
       <div class="card product-card h-100 shadow-sm border">
