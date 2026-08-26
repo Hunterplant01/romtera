@@ -117,7 +117,7 @@ Tanggap Tersedak, Selamatkan Nyawa
 3
            <div class="row g-0">
       <div class="col-md-5 bg-white text-center border-end">
-       <a href="https://ibb.co.com/n8MsRc3K"><img src="https://i.ibb.co.com/Jw2pbtyn/Whats-App-Image-2026-08-09-at-11-14-49.jpg" alt="Whats App Image 2026 08 09 at 11 14 49" border="0">height="300"></a>
+       <a href="https://ibb.co.com/n8MsRc3K"><img src="https://i.ibb.co.com/Jw2pbtyn/Whats-App-Image-2026-08-09-at-11-14-49.jpg" alt="Whats App Image 2026 08 09 at 11 14 49" height="300"></a>
       </div>
       
       <div class="col-md-7 p-4 p-md-5 bg-white">
