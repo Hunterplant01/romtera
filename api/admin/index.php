@@ -2,6 +2,30 @@
 include __DIR__ . '/../koneksi.php';
 include __DIR__ . '/../upload.php';
 
+// Fungsi bantuan untuk upload banyak file
+function prosesUploadMultiple($files_array) {
+    $uploaded_images = [];
+    if(isset($files_array['name'][0]) && $files_array['name'][0] != "") {
+        $count = count($files_array['name']);
+        for($i = 0; $i < $count; $i++) {
+            if($files_array['error'][$i] == 0) {
+                $file_arr = [
+                    'name' => $files_array['name'][$i],
+                    'type' => $files_array['type'][$i],
+                    'tmp_name' => $files_array['tmp_name'][$i],
+                    'error' => $files_array['error'][$i],
+                    'size' => $files_array['size'][$i]
+                ];
+                $url = uploadImage($file_arr);
+                if(strpos($url, 'http') === 0) {
+                    $uploaded_images[] = $url;
+                }
+            }
+        }
+    }
+    return !empty($uploaded_images) ? implode(',', $uploaded_images) : 'https://dummyimage.com/600x600/0056b3/ffffff.png&text=No+Image';
+}
+
 if(isset($_POST['add'])){
     $name  = $koneksi->real_escape_string($_POST['name']);
     $brand = $koneksi->real_escape_string($_POST['brand']);
@@ -10,7 +34,7 @@ if(isset($_POST['add'])){
     $desc  = $koneksi->real_escape_string($_POST['description']);
     $slug  = strtolower(str_replace(" ","-",$name)) . "-" . time();
 
-    $image = uploadImage($_FILES['image']); 
+    $image = prosesUploadMultiple($_FILES['images']); 
     $koneksi->query("INSERT INTO products (name, slug, brand, price, stock, description, image) 
                      VALUES ('$name','$slug','$brand','$price','$stock','$desc','$image')");
     header("Location: /admin/index.php");
@@ -25,8 +49,8 @@ if(isset($_POST['update'])){
     $stock = (int)$_POST['stock'];
     $desc  = $koneksi->real_escape_string($_POST['description']);
 
-    if(isset($_FILES['image']['name']) && $_FILES['image']['name'] != ""){
-        $img = uploadImage($_FILES['image']);
+    if(isset($_FILES['images']['name'][0]) && $_FILES['images']['name'][0] != ""){
+        $img = prosesUploadMultiple($_FILES['images']);
         $koneksi->query("UPDATE products SET name='$name', brand='$brand', price='$price', stock='$stock', description='$desc', image='$img' WHERE id=$id");
     } else {
         $koneksi->query("UPDATE products SET name='$name', brand='$brand', price='$price', stock='$stock', description='$desc' WHERE id=$id");
@@ -63,30 +87,22 @@ if(isset($_GET['delete'])){
 
 <div class="container py-4">
 <h3 class="fw-bold" style="color: #0056b3;">Manajemen Produk Mannequin & Medis</h3>
-<p class="text-muted">Kelola data produk yang akan tampil di halaman pengunjung (Vercel + TiDB).</p>
-
-<button class="btn btn-primary mb-4" style="background-color: #0056b3;" data-bs-toggle="modal" data-bs-target="#addModal">
-+ Tambah Alat Peraga Baru
-</button>
+<button class="btn btn-primary mb-4" style="background-color: #0056b3;" data-bs-toggle="modal" data-bs-target="#addModal">+ Tambah Alat Peraga Baru</button>
 
 <div class="card shadow-sm border-0 p-3">
 <div class="table-responsive">
 <table id="table" class="table table-bordered table-hover align-middle">
 <thead class="table-light">
-<tr>
-<th>Foto</th>
-<th>Nama Alat/Mannequin</th>
-<th>Kategori/Tipe</th>
-<th>Harga</th>
-<th>Stok</th>
-<th>Aksi</th>
-</tr>
+<tr><th>Foto Utama</th><th>Nama Alat/Mannequin</th><th>Kategori/Tipe</th><th>Harga</th><th>Stok</th><th>Aksi</th></tr>
 </thead>
 <tbody>
 <?php
 $q = $koneksi->query("SELECT * FROM products ORDER BY id DESC");
 while($p = $q->fetch_assoc()):
-    $imgSrc = (strpos($p['image'], 'http') === 0) ? $p['image'] : "/assets/img/products/" . $p['image'];
+    // Ambil foto pertama saja untuk tabel admin
+    $images = explode(',', $p['image']);
+    $first_img = trim($images[0]);
+    $imgSrc = (strpos($first_img, 'http') === 0) ? $first_img : "/assets/img/products/" . $first_img;
 ?>
 <tr>
 <td><img src="<?= $imgSrc ?>" width="70" class="rounded border"></td>
@@ -96,14 +112,9 @@ while($p = $q->fetch_assoc()):
 <td><?= $p['stock'] ?></td>
 <td>
 <button class="btn btn-outline-warning btn-sm editBtn mb-1"
-data-id="<?= $p['id'] ?>"
-data-name="<?= htmlspecialchars($p['name']) ?>"
-data-brand="<?= htmlspecialchars($p['brand']) ?>"
-data-price="<?= $p['price'] ?>"
-data-stock="<?= $p['stock'] ?>"
-data-desc="<?= htmlspecialchars($p['description']) ?>"
+data-id="<?= $p['id'] ?>" data-name="<?= htmlspecialchars($p['name']) ?>" data-brand="<?= htmlspecialchars($p['brand']) ?>"
+data-price="<?= $p['price'] ?>" data-stock="<?= $p['stock'] ?>" data-desc="<?= htmlspecialchars($p['description']) ?>"
 data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
-
 <a href="?delete=<?= $p['id'] ?>" onclick="return confirm('Yakin ingin menghapus produk ini?')" class="btn btn-outline-danger btn-sm mb-1">Hapus</a>
 </td>
 </tr>
@@ -120,24 +131,15 @@ data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
 <form method="POST" enctype="multipart/form-data" class="modal-content">
 <div class="modal-header bg-light"><h5 class="fw-bold">Tambah Mannequin/Alat Peraga</h5></div>
 <div class="modal-body">
-<label class="form-label small fw-bold">Nama Produk</label>
-<input name="name" class="form-control mb-3" placeholder="Contoh: Mannequin CPR Half Body" required>
-<label class="form-label small fw-bold">Kategori/Tipe</label>
-<input name="brand" class="form-control mb-3" placeholder="Contoh: Dewasa / Infant / Full Body">
+<input name="name" class="form-control mb-3" placeholder="Nama Produk" required>
+<input name="brand" class="form-control mb-3" placeholder="Kategori/Tipe">
 <div class="row">
-    <div class="col-md-6 mb-3">
-        <label class="form-label small fw-bold">Harga (Rp)</label>
-        <input name="price" type="number" class="form-control" required>
-    </div>
-    <div class="col-md-6 mb-3">
-        <label class="form-label small fw-bold">Stok (Unit)</label>
-        <input name="stock" type="number" class="form-control" required>
-    </div>
+    <div class="col-md-6 mb-3"><input name="price" type="number" class="form-control" placeholder="Harga (Rp)" required></div>
+    <div class="col-md-6 mb-3"><input name="stock" type="number" class="form-control" placeholder="Stok (Unit)" required></div>
 </div>
-<label class="form-label small fw-bold">Spesifikasi & Deskripsi</label>
-<textarea name="description" class="form-control mb-3" rows="4"></textarea>
-<label class="form-label small fw-bold">Foto Produk (Auto-upload ke ImgBB)</label>
-<input type="file" name="image" class="form-control" accept="image/*" required>
+<textarea name="description" class="form-control mb-3" rows="4" placeholder="Spesifikasi"></textarea>
+<label class="form-label small fw-bold text-danger">Bisa pilih lebih dari 1 foto (Tahan tombol CTRL di HP/PC saat memilih gambar)</label>
+<input type="file" name="images[]" multiple class="form-control" accept="image/*" required>
 </div>
 <div class="modal-footer"><button class="btn text-white" style="background-color: #0056b3;" name="add">Simpan Produk</button></div>
 </form>
@@ -151,24 +153,15 @@ data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
 <input type="hidden" name="id" id="edit_id">
 <div class="modal-header bg-light"><h5 class="fw-bold">Edit Produk</h5></div>
 <div class="modal-body">
-<label class="form-label small fw-bold">Nama Produk</label>
 <input name="name" id="edit_name" class="form-control mb-3" required>
-<label class="form-label small fw-bold">Kategori/Tipe</label>
 <input name="brand" id="edit_brand" class="form-control mb-3">
 <div class="row">
-    <div class="col-md-6 mb-3">
-        <label class="form-label small fw-bold">Harga (Rp)</label>
-        <input name="price" id="edit_price" type="number" class="form-control" required>
-    </div>
-    <div class="col-md-6 mb-3">
-        <label class="form-label small fw-bold">Stok (Unit)</label>
-        <input name="stock" id="edit_stock" type="number" class="form-control" required>
-    </div>
+    <div class="col-md-6 mb-3"><input name="price" id="edit_price" type="number" class="form-control" required></div>
+    <div class="col-md-6 mb-3"><input name="stock" id="edit_stock" type="number" class="form-control" required></div>
 </div>
-<label class="form-label small fw-bold">Spesifikasi & Deskripsi</label>
 <textarea name="description" id="edit_desc" class="form-control mb-3" rows="4"></textarea>
-<label class="form-label small fw-bold">Ganti Foto (Opsional)</label>
-<input type="file" name="image" class="form-control" accept="image/*">
+<label class="form-label small fw-bold text-danger">Ganti Foto (Opsional, pilih beberapa foto sekaligus)</label>
+<input type="file" name="images[]" multiple class="form-control" accept="image/*">
 </div>
 <div class="modal-footer"><button class="btn btn-warning fw-bold" name="update">Update Data</button></div>
 </form>
@@ -182,12 +175,8 @@ data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
 <script>
 $('#table').DataTable();
 $('.editBtn').click(function(){
-$('#edit_id').val($(this).data('id'));
-$('#edit_name').val($(this).data('name'));
-$('#edit_brand').val($(this).data('brand'));
-$('#edit_price').val($(this).data('price'));
-$('#edit_stock').val($(this).data('stock'));
-$('#edit_desc').val($(this).data('desc'));
+$('#edit_id').val($(this).data('id')); $('#edit_name').val($(this).data('name')); $('#edit_brand').val($(this).data('brand'));
+$('#edit_price').val($(this).data('price')); $('#edit_stock').val($(this).data('stock')); $('#edit_desc').val($(this).data('desc'));
 });
 </script>
 </body>
