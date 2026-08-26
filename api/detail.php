@@ -36,8 +36,35 @@ $imgSrc = (strpos($p['image'], 'http') === 0) ? $p['image'] : "/assets/img/produ
 <div class="container pb-5">
   <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
     <div class="row g-0">
-      <div class="col-md-5 bg-white text-center border-end">
-        <img src="<?= $imgSrc ?>" class="product-img" alt="<?= $p['name'] ?>">
+      <!-- Gambar Produk (Slider/Carousel) -->
+      <div class="col-md-5 bg-white text-center border-end p-0">
+        <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner h-100">
+            <?php 
+            $images = explode(',', $p['image']);
+            foreach($images as $index => $img): 
+                $img = trim($img);
+                $imgSrc = (strpos($img, 'http') === 0) ? $img : "/assets/img/products/" . $img;
+                $active = $index === 0 ? 'active' : '';
+            ?>
+            <div class="carousel-item <?= $active ?>">
+              <img src="<?= $imgSrc ?>" class="product-img w-100" alt="Foto <?= $p['name'] ?>">
+            </div>
+            <?php endforeach; ?>
+          </div>
+          
+          <!-- Tombol Kiri Kanan (Hanya muncul jika foto lebih dari 1) -->
+          <?php if(count($images) > 1): ?>
+          <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true" style="opacity: 0.6;"></span>
+            <span class="visually-hidden">Sebelumnya</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true" style="opacity: 0.6;"></span>
+            <span class="visually-hidden">Selanjutnya</span>
+          </button>
+          <?php endif; ?>
+        </div>
       </div>
       
       <div class="col-md-7 p-4 p-md-5 bg-white">
